@@ -1,0 +1,22 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: blueviolet;
+    text-align: center;
+}
+h2{
+    color: black;
+}
+#msg{
+   margin-bottom: 1em; 
+}
+#canvas{
+    width: 500;
+    height: 500;
+    border: 3px solid ;
+}
+#score{
+    margin-top: 1em;
+    font-size: 2em;
+}
