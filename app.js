@@ -7,7 +7,7 @@ const HEIGHT = canvas.height;
 const UNIT = 25;
 let foodx;
 let foody;
-let Xvelocity = 25;
+let xvelocity = 25;
 let yvelocity = 0;
 
 let snake = [
@@ -23,13 +23,19 @@ let snake = [
 startGame();
 
 function startGame(){
-    
     ctx.fillStyle = "black"
     ctx.fillRect(0,0,WIDTH,HEIGHT)
     createFood();
     displayFood();
     drawSnake();
     moveSnake();
+    clearBoard();
+    drawSnake();
+    // requestAnimationFrame(startGame);
+}
+function clearBoard(){
+    ctx.fillStyle = "black";
+    ctx.fillRect(0,0,WIDTH,HEIGHT);
 }
 function createFood(){
     foodx = Math.floor(Math.random()*WIDTH/UNIT)*UNIT;
@@ -46,12 +52,37 @@ function drawSnake(){
     ctx.stokeStyle = "#212121";
     snake.forEach((snakePart) => {
         ctx.fillRect(snakePart.x,snakePart.y,UNIT,UNIT)
-        ctx.storkeRect(snakePart.x,snakePart.y,UNIT,UNIT)
+        ctx.strokeRect(snakePart.x,snakePart.y,UNIT,UNIT)
     })
 }
 
-function moveSnake(){
+// window.addEventListener("keydown", (event) => {
+//     if(event.code == "ArrowRight"){ 
+//         snake.forEach((part) => {
+//             part.x += 1
+//         })
+//     }
+//     if(event.code == "ArrowLeft"){
+//         snake.forEach((part) => {
+//             part.x -=1
+//         })
+//     }
+//     if(event.code == "ArrowUp"){
+//         snake.forEach((part) =>{
+//             part.y -= 1 
+//         })
+//     }    
+//     if(event.code == "ArrowDown"){
+//         snake.forEach((part)=>{
+//             part.y += 1
+//         })
+//     }
+// })
 
-    const head +={x:snake(0).x+Xvelocity,
-                 y:snake(0).y+yvelocity }
+function moveSnake(){
+    const head ={x:snake[0].x+xvelocity,
+                y:snake[0].y+yvelocity}
+
+    snake.unshift(head)
+    snake.pop()
 }
